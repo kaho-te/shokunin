@@ -22,7 +22,6 @@ class TypeSeeder extends Seeder
             'name' => 'GEIKO',
             'icon' => 'icon_dummy',
             'image' => 'dummy',
-
         ]);
         Type::create([
             'name' => 'MAIKO',
