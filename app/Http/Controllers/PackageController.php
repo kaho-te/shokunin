@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artisan;
 use App\Models\Package;
+use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PackageController extends Controller
 {
@@ -36,7 +39,22 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-        //
+        $packageArtisans = Package::with('get_artisans')->find($package->id);
+        $artisans = $packageArtisans->get_artisans;
+        
+        $artisanIds = array();
+        for($i=0; $i<count($artisans); $i++) {
+            $artisanIds[] = $artisans[$i]->id;
+        }
+        $artisanTypes = DB::table('artisans')
+            ->whereIn( 'artisans.id', $artisanIds)
+            ->join('artisan_type', 'artisan_type.artisan_id', '=', 'artisans.id')
+            ->join('types', 'types.id', '=', 'artisan_type.type_id')
+            ->distinct()
+            ->select('types.name','types.image')
+            ->get();
+
+        return view('show', compact('package','artisanTypes'));
     }
 
     /**
