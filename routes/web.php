@@ -30,8 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
     Route::get('/packages/{package}', [PackageController::class, 'show'])->name('packages.show');
-    Route::get('/packages/search', [PackageController::class, 'search'])->name('packages.search');
-    Route::get('/packages/check', [PackageController::class, 'check'])->name('packages.check');
+    Route::get('/package/search', [PackageController::class, 'search'])->name('packages.search');
+    Route::get('/package/check', [PackageController::class, 'check'])->name('packages.check');
     Route::get('reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('reservations/store', [ReservationController::class, 'store'])->name('reservations.store');
     Route::get('reservations/check', [ReservationController::class, 'check'])->name('reservations.check');

@@ -19,7 +19,7 @@
       <div class="text-xs leading-6">{!! nl2br(e($package->plan)) !!}</div>
     </div>
     <div class="reserve_btn my-12 text-center">
-      <button onclick="location.href='{{ route('shokunin.index') }}'"  class="px-16 py-3">Reserve</button>
+      <button onclick="location.href='{{ route('packages.index') }}'"  class="px-16 py-3">Reserve</button>
     </div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         @foreach ($package->get_artisans as $artisan)
@@ -33,7 +33,7 @@
           </div>
         @endforeach
         <div class="reserve_btn my-12 text-center">
-          <button onclick="location.href='{{ route('shokunin.index') }}'"  class="px-16 py-3">Reserve</button>
+          <button onclick="location.href='{{ route('packages.index') }}'"  class="px-16 py-3">Reserve</button>
         </div>
     </div>
   </div>
