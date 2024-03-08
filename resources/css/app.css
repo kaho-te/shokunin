@@ -29,7 +29,16 @@ footer {
 
 
 /* 各ページの設定 */
+#content{
+  width: 300px;
+}
 
-#content {
-    width: 300px;
+.result{
+  border-bottom: 3px solid #920B0B;
+}
+
+.type{
+  border: 1px dotted #FFFFF1;
+  border-radius:100vh;
+
 }

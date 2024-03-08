@@ -41,20 +41,20 @@ class PackageController extends Controller
     {
         $packageArtisans = Package::with('get_artisans')->find($package->id);
         $artisans = $packageArtisans->get_artisans;
-        
+
         $artisanIds = array();
-        for($i=0; $i<count($artisans); $i++) {
+        for ($i = 0; $i < count($artisans); $i++) {
             $artisanIds[] = $artisans[$i]->id;
         }
         $artisanTypes = DB::table('artisans')
-            ->whereIn( 'artisans.id', $artisanIds)
+            ->whereIn('artisans.id', $artisanIds)
             ->join('artisan_type', 'artisan_type.artisan_id', '=', 'artisans.id')
             ->join('types', 'types.id', '=', 'artisan_type.type_id')
             ->distinct()
-            ->select('types.name','types.image')
+            ->select('types.name', 'types.icon', 'types.image')
             ->get();
 
-        return view('show', compact('package','artisanTypes'));
+        return view('show', compact('package', 'artisanTypes'));
     }
 
     /**
@@ -81,9 +81,39 @@ class PackageController extends Controller
         //
     }
 
-    public function search(Package $package)
+    public function search(Request $request)
     {
-        //
+        $scale = $request->adult_scale + $request->child_scale; 
+        $packages = Package::where('start_date', '<=', $request->date)
+            ->where('end_date', '>=', $request->date)
+            ->where('min_guest_num', '<=', $scale)
+            ->where('max_guest_num', '>=', $scale)
+            ->get();
+
+        $resultCnt = $packages->count();
+
+        $packageIds = array();
+        for ($i = 0; $i < count($packages); $i++) {
+            $packageIds[] = $packages[$i]->id;
+        }
+
+        $packageTypes = DB::table('packages')
+            ->whereIn('packages.id', [1,2])
+            ->join('artisan_package', 'packages.id', '=', 'artisan_package.package_id')
+            ->join('artisan_type', 'artisan_package.artisan_id', '=', 'artisan_type.artisan_id')
+            ->join('types', 'artisan_type.type_id', '=', 'types.id')
+            ->distinct()
+            ->select(
+                'packages.*',
+                'types.id as type_id',
+                'types.name as type_name',
+                'types.icon as type_icon',
+                'types.image as type_image'
+            )
+            ->orderByRaw('packages.start_date asc, types.id asc')
+            ->get();
+
+        return view('search', compact('packages', 'packageTypes', 'resultCnt'));
     }
 
     public function check(Package $package)
