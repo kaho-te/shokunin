@@ -22,6 +22,12 @@ header {
     font-style: italic;
 }
 
+footer {
+    background-color: #920B0B;
+    color: #fffff1;
+}
+
+
 /* 各ページの設定 */
 
 #content {
