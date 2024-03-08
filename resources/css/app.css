@@ -2,22 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-main{
-  background-color: #333333;
-  color: #FFFFF1;
+main {
+    background-color: #333333;
+    color: #fffff1;
 }
 
-h2{
-  color: #B9A157;
+h2 {
+    color: #b9a157;
 }
 
-button{
-  background-color: #B9A157;
-  color: #280808;
+button {
+    background-color: #b9a157;
+    color: #280808;
+}
+
+header {
+    background-color: #280808;
+    font-family: "Brush Script MT", cursive;
+    font-style: italic;
 }
 
 /* 各ページの設定 */
 
-#content{
-  width: 300px;
+#content {
+    width: 300px;
 }
