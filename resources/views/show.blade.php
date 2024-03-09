@@ -4,8 +4,8 @@
     <div class="text-xs my-2">開催期間： {{ $package->start_date }} 〜 {{ $package->end_date }}</div>
     <div class="flex">
     @foreach ($artisanTypes as $artisanType)
-    <div class="type flex mx-2 mb-2 px-2 py-1">
-        <div><img src="{{ asset('storage/' . $artisanType->image) }}" alt=""></div>
+    <div class="type flex mr-2 mb-2 px-2 py-1">
+        <div><img src="{{ asset('storage/' . $artisanType->image) }}" alt="" width=100%></div>
         <div>
           <div class="text-xs">{{ $artisanType->name }}</div>
         </div>
@@ -13,7 +13,7 @@
     @endforeach
   </div>
     <div class="text-xs">adult {{ $package->adult_price }} 円（child {{ $package->child_price }}円）</div>
-    <div class="my-3"><img src="{{ asset('storage/' . $package->image) }}" alt="パッケージ画像" width=350 height=200></div>
+    <div class="my-3"><img src="{{ asset('storage/' . $package->image) }}" alt="パッケージ画像" width=100% ></div>
     <div class="my-2"><img src="{{ asset('storage/dummy.png') }}"><span class="text-xs font-bold">WOW</span></div>
     <div class="text-xs break-words whitespace-pre-wrap">{!! nl2br(e($package->description)) !!}</div>
     <div id="content" class="mx-auto my-5 py-3 px-5 w-3/4">
