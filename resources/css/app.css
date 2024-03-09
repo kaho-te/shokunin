@@ -14,6 +14,7 @@ h2 {
 button {
     background-color: #b9a157;
     color: #280808;
+    box-shadow: 2px 4px 6px #F5D565 inset;
 }
 
 header {
@@ -48,3 +49,40 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.pkg-img-area {
+    width : 45%;
+}
+
+.pkg-text-area {
+    width : 55%;
+}
+
+.pkg-img {
+    width: 140px;
+    height: 80px;
+}
+
+.pkg-text-area{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+
+.arrow-right{
+    position: relative;
+    display: inline-block;
+    padding: 9px;    
+}
+
+.arrow-right::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: solid 2px #280808;
+    border-right: solid 2px #280808;
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    transform: rotate(45deg);
+  }

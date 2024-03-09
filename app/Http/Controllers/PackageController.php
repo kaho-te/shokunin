@@ -158,10 +158,10 @@ class PackageController extends Controller
                 'types.icon as type_icon',
                 'types.image as type_image'
             )
-            ->orderBy('types.id asc')
+            ->orderBy('types.id')
             ->get();
 
-        return view('search', compact('packages', 'packageTypes', 'resultCnt'));
+        return view('search', compact('packages', 'packageTypes', 'resultCnt', 'request'));
     }
 
     public function check(Package $package)
