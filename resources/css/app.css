@@ -14,7 +14,7 @@ h2 {
 button {
     background-color: #b9a157;
     color: #280808;
-    box-shadow: 2px 4px 6px #F5D565 inset;
+    box-shadow: 2px 4px 6px #f5d565 inset;
 }
 
 header {
@@ -30,7 +30,8 @@ header {
 
 /* 各ページの設定 */
 #content {
-    width: 300px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 4px rgb(245, 213, 101, 0.4);
 }
 
 .result {
@@ -50,11 +51,11 @@ header {
     background-size: cover;
 }
 .pkg-img-area {
-    width : 45%;
+    width: 45%;
 }
 
 .pkg-text-area {
-    width : 55%;
+    width: 55%;
 }
 
 .pkg-img {
@@ -62,21 +63,21 @@ header {
     height: 80px;
 }
 
-.pkg-text-area{
+.pkg-text-paragraph {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
 }
 
-.arrow-right{
+.arrow-right {
     position: relative;
     display: inline-block;
-    padding: 9px;    
+    padding: 9px;
 }
 
 .arrow-right::before {
-    content: '';
+    content: "";
     width: 8px;
     height: 8px;
     border-top: solid 2px #280808;
@@ -85,4 +86,47 @@ header {
     left: 10px;
     top: 8px;
     transform: rotate(45deg);
-  }
+}
+
+#scroll {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+#scroll > div {
+    flex-shrink: 0;
+    height: 100%;
+    align-items: center;
+    line-height: 1;
+}
+
+.top-warapper {
+    background-color: rgba(40, 8, 8, 0.6);
+}
+
+.top-form-left {
+    background-color: #b9a157;
+    color: #280808;
+    border-top: #280808 2px solid;
+    border-bottom: #280808 2px solid;
+    border-left: #280808 2px solid;
+}
+
+.top-form-right {
+    background-color: #b9a157;
+    color: #280808;
+    border-top: #280808 2px solid;
+    border-bottom: #280808 2px solid;
+    border-left: #280808 2px solid;
+    border-right: #280808 2px solid;
+}
+
+.top-form-inner {
+    background-color: #b9a157;
+    border: none;
+}
+
+.top-form-inner::placeholder {
+    color: #280808;
+}
