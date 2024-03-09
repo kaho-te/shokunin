@@ -18,27 +18,33 @@ button {
 
 header {
     background-color: #280808;
-    font-family: "Brush Script MT", cursive;
+    font-family: "Lucida Handwriting";
     font-style: italic;
 }
 
-footer {
-    background-color: #920B0B;
+.bg-color-red {
+    background-color: #920b0b;
     color: #fffff1;
 }
 
-
 /* 各ページの設定 */
-#content{
-  width: 300px;
+#content {
+    width: 300px;
 }
 
-.result{
-  border-bottom: 3px solid #920B0B;
+.result {
+    border-bottom: 3px solid #920b0b;
 }
 
-.type{
-  border: 1px dotted #FFFFF1;
-  border-radius:100vh;
+.type {
+    border: 1px dotted #fffff1;
+    border-radius: 100vh;
+}
 
+.top-image {
+    width: 100%;
+    height: 200px;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
