@@ -15,7 +15,59 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::orderBy('id')
+            ->get();
+
+        $recomends = Package::where('recommend_flag', '=', '1')
+            ->orderBy('id')
+            ->get();
+
+        $recomendIds = array();
+        for ($i = 0; $i < count($recomends); $i++) {
+            $recomendIds[] = $recomends[$i]->id;
+        }
+
+        $recomendTypes = DB::table('packages')
+            ->whereIn('packages.id', $recomendIds)
+            ->join('artisan_package', 'packages.id', '=', 'artisan_package.package_id')
+            ->join('artisan_type', 'artisan_package.artisan_id', '=', 'artisan_type.artisan_id')
+            ->join('types', 'artisan_type.type_id', '=', 'types.id')
+            ->distinct()
+            ->select(
+                'packages.id',
+                'types.id as type_id',
+                'types.name as type_name',
+                'types.icon as type_icon',
+                'types.image as type_image'
+            )
+            ->orderByRaw('packages.id , types.id asc')
+            ->get();
+
+        $packages = Package::orderBy('id')
+            ->get();
+
+        $packageIds = array();
+        for ($i = 0; $i < count($packages); $i++) {
+            $packageIds[] = $packages[$i]->id;
+        }
+        $packageTypes = DB::table('packages')
+            ->whereIn('packages.id', $packageIds)
+            ->join('artisan_package', 'packages.id', '=', 'artisan_package.package_id')
+            ->join('artisan_type', 'artisan_package.artisan_id', '=', 'artisan_type.artisan_id')
+            ->join('types', 'artisan_type.type_id', '=', 'types.id')
+            ->distinct()
+            ->select(
+                'packages.id',
+                'packages.recommend_flag',
+                'types.id as type_id',
+                'types.name as type_name',
+                'types.icon as type_icon',
+                'types.image as type_image'
+            )
+            ->orderByRaw('packages.id , types.id asc')
+            ->get();
+
+        return view('index', compact('types', 'recomends', 'recomendTypes', 'packages', 'packageTypes'));
     }
 
     /**
@@ -39,7 +91,8 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-        $packageArtisans = Package::with('get_artisans')->find($package->id);
+        $package = Package::find(1);
+        $packageArtisans = Package::with('get_artisans')->find(1);
         $artisans = $packageArtisans->get_artisans;
 
         $artisanIds = array();
@@ -83,11 +136,17 @@ class PackageController extends Controller
 
     public function search(Request $request)
     {
-        $scale = $request->adult_scale + $request->child_scale; 
-        $packages = Package::where('start_date', '<=', $request->date)
-            ->where('end_date', '>=', $request->date)
-            ->where('min_guest_num', '<=', $scale)
-            ->where('max_guest_num', '>=', $scale)
+        $scale = $request->adult_scale + $request->child_scale;
+        // $packages = Package::where('start_date', '<=', $request->date)
+        //     ->where('end_date', '>=', $request->date)
+        //     ->where('min_guest_num', '<=', $scale)
+        //     ->where('max_guest_num', '>=', $scale)
+        //     ->get();
+
+        $packages = Package::where('start_date', '<=', '2024-03-01')
+            ->where('end_date', '>=', '2024-03-01')
+            ->where('min_guest_num', '<=', 2)
+            ->where('max_guest_num', '>=', 2)
             ->get();
 
         $resultCnt = $packages->count();
@@ -98,20 +157,22 @@ class PackageController extends Controller
         }
 
         $packageTypes = DB::table('packages')
-            ->whereIn('packages.id', [1,2])
+            ->whereIn('packages.id', $packageIds)
             ->join('artisan_package', 'packages.id', '=', 'artisan_package.package_id')
             ->join('artisan_type', 'artisan_package.artisan_id', '=', 'artisan_type.artisan_id')
             ->join('types', 'artisan_type.type_id', '=', 'types.id')
             ->distinct()
             ->select(
-                'packages.*',
+                'packages.id',
                 'types.id as type_id',
                 'types.name as type_name',
                 'types.icon as type_icon',
                 'types.image as type_image'
             )
-            ->orderByRaw('packages.start_date asc, types.id asc')
+            ->orderByRaw('types.id asc')
             ->get();
+
+        dd($packageTypes);
 
         return view('search', compact('packages', 'packageTypes', 'resultCnt'));
     }

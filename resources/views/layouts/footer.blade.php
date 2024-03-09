@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }">
     <!-- Primary Navigation Menu -->
-    <footer class="max-w-7xl mx-auto">
+    <footer class="bg-color-red max-w-7xl mx-auto">
         <div class="h-24">
             <div class="flex border-b border-white">
                 <div class="text-xs border-r border-white w-1/2 h-8">

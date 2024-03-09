@@ -10,7 +10,7 @@
                     </a>
                 </div>
                 <div class="flex items-center">
-                    <h2>SHOKUNIN</h2>
+                    <h2>Shokunin</h2>
                 </div>
             </div>
         </div>
