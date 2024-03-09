@@ -14,7 +14,7 @@ h2 {
 button {
     background-color: #b9a157;
     color: #280808;
-    box-shadow: 2px 4px 6px #F5D565 inset;
+    box-shadow: 2px 4px 4px rgb(245, 213, 101, 0.6) inset;
 }
 
 header {
@@ -30,7 +30,8 @@ header {
 
 /* 各ページの設定 */
 #content {
-    width: 300px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 4px rgb(245, 213, 101, 0.4);
 }
 
 .result {
@@ -86,3 +87,9 @@ header {
     top: 8px;
     transform: rotate(45deg);
   }
+
+.artisan-area {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 4px rgb(245, 213, 101, 0.4);
+}
+
