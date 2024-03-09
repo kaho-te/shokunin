@@ -58,16 +58,8 @@ header {
     width : 55%;
 }
 
-.pkg-img {
-    width: 140px;
-    height: 80px;
-}
-
 .pkg-text-area{
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
 }
 
 .arrow-right{
