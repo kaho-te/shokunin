@@ -19,10 +19,10 @@
     </div>
     <div class="text-xs">adult {{ $package->adult_price }} 円（child {{ $package->child_price }}円）</div>
     <div class="flex my-3">
-      <div class="pkg-img-area">
+      <div class="pkg-img-area pr-4">
         <img src="{{ asset('storage/' . $package->image) }}"  alt="パッケージ画像" class="pkg-img">
       </div>
-      <div class="pkg-text-area text-xs break-all" >
+      <div class="pkg-text-area text-xs break-words h-1/3" >
         {!! nl2br(e($package->description)) !!}
       </div>      
     </div>

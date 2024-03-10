@@ -14,7 +14,7 @@ h2 {
 button {
     background-color: #b9a157;
     color: #280808;
-    box-shadow: 2px 4px 6px #f5d565 inset;
+    box-shadow: 2px 4px 4px rgb(245, 213, 101, 0.6) inset;
 }
 
 header {
@@ -65,9 +65,6 @@ header {
 
 .pkg-text-paragraph {
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
 }
 
 .arrow-right {
@@ -130,3 +127,9 @@ header {
 .top-form-inner::placeholder {
     color: #280808;
 }
+
+.artisan-area {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 4px rgb(245, 213, 101, 0.4);
+}
+
